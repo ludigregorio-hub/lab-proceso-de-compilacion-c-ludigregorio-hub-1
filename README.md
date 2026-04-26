@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/iVzT1xMN)
 # Laboratorio: El Proceso de Compilación en C
 
 **Materia:** Sintaxis y Semántica de los Lenguajes (UTN-FRBA)
@@ -10,7 +11,7 @@
 
 Este laboratorio se entrega a través de **GitHub Classroom**. Al aceptar el assignment se te creó un repositorio personal en la organización de la materia con todos los archivos necesarios.
 
-**El flujo es simple**: trabajás en `main`, verificás localmente con `make test`, y cuando está listo hacés push. GitHub ejecuta automáticamente el workflow de corrección y podés ver los resultados en la pestaña **Actions** de tu repositorio.
+**El flujo es simple**: trabajás en `main` y hacés push.** No hace falta crear ramas ni abrir Pull Requests manualmente, GitHub Classroom crea automáticamente una rama `feedback` y abre un PR en tu repositorio. Ahí es donde el docente revisa tu trabajo y donde ves los resultados de los tests.
 
 **Opciones para trabajar:**
 - **Local:** clonar el repositorio en tu máquina con `git clone` y trabajar con el editor que prefieras.
@@ -58,15 +59,13 @@ Abrí el archivo con cualquier editor y respondé cada pregunta en el lugar indi
 
 #### Paso 4: Verificar localmente y hacer push
 
-Antes de pushear, verificá tu puntaje con:
+Antes de pushear, verificá tu puntaje local con:
 
 ```bash
 make test
 ```
 
-**Flujo recomendado:** hacé commits frecuentes mientras avanzás, usá `make test` para verificar tu progreso, y dejá el push para cuando una parte esté realmente lista.
-
-Cuando estés listo/a, commiteá y pusheá:
+> **Tip:** el workflow de corrección solo se activa cuando pusheás cambios en archivos `.i`, `.s`, `.c`, `salidas/` o `proceso_compilacion.md`. Para todo lo demás, `make test` te da el mismo resultado sin consumir minutos de GitHub Actions.
 
 #### Paso 4b: Commitear y hacer push
 
@@ -92,17 +91,14 @@ git log --oneline
 
 > **`programa.o` y los ejecutables no deben aparecer en `git status`.** Si aparecen, el `.gitignore` no está funcionando, no usar `git add .`, agregar cada archivo por nombre.
 
-#### Paso 5: Ver resultados en GitHub
+#### Paso 5: Revisar el Pull Request de feedback
 
-Una vez que hiciste push, entrá a tu repositorio en GitHub:
+Una vez que hiciste push, entrá a tu repositorio en GitHub. Ya va a haber un Pull Request abierto llamado **"Feedback"**. Ahí podés ver:
 
-1. Hacé click en la pestaña **Actions**
-2. Hacé click en la ejecución más reciente → job **Autograding**
-3. Al final del job vas a ver la tabla con el resultado de cada check y el puntaje total
+- Los **checks automáticos** en la pestaña "Checks": ✅ pasó / ❌ falló.
+- Los **comentarios del docente** sobre tus respuestas abiertas.
 
-Si algún check falla, corregí el problema, commiteá y volvé a pushear — el workflow se re-ejecuta solo.
-
-> ⚠️ **Evitá pushes innecesarios.** Cada ejecución consume cómputo en servidores de GitHub — un recurso compartido. El workflow solo se activa cuando pusheás cambios en archivos `.i`, `.s`, `.c`, `salidas/` o `proceso_compilacion.md`. Para el resto, `make test` te da el mismo resultado en tu terminal sin costo.
+Si algún check falla, corregí el problema, commitá el archivo y hacé push nuevamente — los checks se re-ejecutan solos.
 
 ---
 
@@ -113,7 +109,7 @@ Los checks son de dos tipos:
 **Sobre las respuestas en este archivo:**
 
 - Las **respuestas cerradas** (`CLAVE=valor`) se verifican automáticamente con cada push. Deben escribirse exactamente como se indica: sin espacios, sin comillas, respetando mayúsculas.
-- Las **respuestas abiertas** (`> **R:**`) no se evalúan automáticamente. Escribilas con tus propias palabras — el docente las revisa manualmente.
+- Las **respuestas abiertas** (`> **R:**`) **no se evalúan automáticamente**. Las lee el docente en el Pull Request de feedback y puede dejar comentarios sobre ellas. Escribilas con tus propias palabras.
 
 ---
 
@@ -1258,3 +1254,4 @@ c. Ejecutar `ldd programa_static` (Linux). ¿Qué diferencia hay respecto a `ldd
 a. Ejecutar `clang -Xclang -dump-tokens programa.c 2>&1 | grep "programa.c" | wc -l`. ¿Cuántos tokens tiene `programa.c`?
 b. Buscar en la salida del AST (`clang -Xclang -ast-dump`) la función `factorial`. ¿Cómo se representa la recursión en el árbol?
 c. ¿Aparece algún `ImplicitCastExpr` en el AST? ¿Qué conversión realiza?
+:)
